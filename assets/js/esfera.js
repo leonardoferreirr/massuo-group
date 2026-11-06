@@ -111,8 +111,10 @@ export function mountEsfera(canvas, { mobile = false, reducedMotion = false } = 
   const desenhar = (agora) => {
     const t = (agora - inicio) / 1000;
     // deriva lenta, para a esfera nunca ficar morta; o mouse manda quando está presente
-    const fx = reducedMotion ? 0 : Math.sin(t * 0.42) * 0.09;
-    const fy = reducedMotion ? 0 : Math.sin(t * 0.31 + 1.1) * 0.06;
+    // no celular não há mouse para acompanhar: a deriva é maior e mais rápida, para ficar claro que é uma animação
+    const ampX = mobile ? 0.25 : 0.09, ampY = mobile ? 0.17 : 0.06, vel = mobile ? 1.7 : 1;
+    const fx = reducedMotion ? 0 : Math.sin(t * 0.42 * vel) * ampX;
+    const fy = reducedMotion ? 0 : Math.sin(t * 0.31 * vel + 1.1) * ampY;
     alvo.x = clamp(mouse.x * LIM.yaw + fx + rolagem * LIM.yaw, -LIM.yaw, LIM.yaw);
     alvo.y = clamp(mouse.y * LIM.pitch + fy, -LIM.pitch, LIM.pitch);
     atual.x += (alvo.x - atual.x) * 0.055;
@@ -154,7 +156,7 @@ export function mountEsfera(canvas, { mobile = false, reducedMotion = false } = 
 
   return {
     ready,
-    setScroll(p) { rolagem = mobile ? clamp(p, 0, 1) * 1.4 - 0.2 : 0; },
+    setScroll(p) { rolagem = mobile ? clamp(p, 0, 1) * 0.4 : 0; },
     pause,
     resume,
     dispose() {

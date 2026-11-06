@@ -361,3 +361,36 @@ h3{font-weight:400;letter-spacing:-.015em;line-height:1.2;font-size:var(--t-h3)}
 .card{filter:grayscale(1) brightness(1.08);transition:transform .55s var(--ease),box-shadow .55s var(--ease),filter .5s var(--ease)}
 .card:hover,.card:focus-within,.card.cor{filter:none}
 @media (prefers-reduced-motion:reduce){.card{transition:none}}
+
+/* logo no formato original, pedido do Paulo: o nome embaixo do globo, nas proporções do arquivo dele */
+.brand,.foot__brand .brand,.thanks .brand{flex-direction:column;align-items:center;gap:.14rem}
+.brand__esfera{width:2.3rem;height:2.3rem}
+.brand__nome{height:1.04rem;width:auto}
+.foot__brand .brand{align-items:flex-start;width:fit-content}
+.foot__brand .brand .brand__esfera{align-self:center}
+@media (max-width:900px){
+  .brand__esfera{width:2.15rem;height:2.15rem}
+  .brand__nome{height:.97rem}
+  .foot__brand .brand{align-items:center;margin-inline:auto}
+}
+
+/* Empresas: os três cartões sempre do mesmo tamanho, com o texto visível e o Conhecer alinhado embaixo */
+.fila__trilho{align-items:stretch}
+.card{display:flex;flex-direction:column}
+.card__txt{display:flex;flex-direction:column;flex:1 1 auto}
+.card__mais{display:flex;flex:1 1 auto}
+.card__mais>div{display:flex;flex-direction:column;flex:1 1 auto;overflow:visible}
+.card__ir{margin-top:auto;padding-top:1rem}
+.card:hover .card__mais,.card:focus-within .card__mais{display:flex}
+@media (min-width:901px){.top .brand__esfera{width:2.5rem;height:2.5rem}.top .brand__nome{height:1.14rem}}
+
+/* o mouse só traz a cor: nenhum cartão cresce. A área do logo enxuga para a seção caber em uma tela */
+.card:hover,.card:focus-within{transform:none}
+.card:hover .card__logo img{transform:none}
+.card__logo{aspect-ratio:16/8.6;padding:1.5rem 2rem .5rem}
+.card__txt{padding-bottom:1.3rem}
+@media (min-width:861px){
+  #empresas{padding-block:clamp(2.6rem,5.5vh,4rem)}
+  #empresas .sec__cab{margin-bottom:clamp(1.2rem,3vh,2.2rem)}
+  #empresas .ctas{margin-top:clamp(1.2rem,3vh,2rem)}
+}

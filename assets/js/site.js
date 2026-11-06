@@ -5,7 +5,7 @@
   const d = document, h = d.documentElement, w = window;
   const mob = w.matchMedia('(max-width:860px)');
   const rm = w.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const ESFERA = '/assets/js/esfera.js?v=9be016d015';
+  const ESFERA = '/assets/js/esfera.js?v=2a2426ea45';
 
   /* ---------- cabeçalho e menu ---------- */
   const top = d.querySelector('.top'), burger = d.querySelector('.burger');
