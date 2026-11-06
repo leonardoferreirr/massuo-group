@@ -1,6 +1,7 @@
 /* Massuo Group: núcleo do site. Sem dependência para o essencial (menu, revelações, propósito aceso,
    fileira de empresas, formulário). A esfera ao vivo (esfera.js) entra logo depois do load, sobre o pôster idêntico. */
 (() => {
+  document.documentElement.classList.add('js');
   const d = document, h = d.documentElement, w = window;
   const mob = w.matchMedia('(max-width:860px)');
   const rm = w.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -70,13 +71,18 @@
   let acesas = -1;
   const acender = () => {
     if (!manif) return;
-    const r = manif.getBoundingClientRect(), H = innerHeight;
-    const p = rm ? 1 : Math.min(1, Math.max(0, (H * .82 - r.top) / (r.height + H * .3)));
+    const sec = manif.closest('.quem'), r = sec.getBoundingClientRect(), H = innerHeight;
+    /* a seção fica parada na tela enquanto o texto acende; termina antes de ela ir embora */
+    const total = Math.max(1, sec.offsetHeight - H);
+    const p = rm || total < H * .2 ? 1 : Math.min(1, Math.max(0, (H * .12 - r.top) / (total * .92)));
     const n = Math.round(p * palavras.length);
     if (n !== acesas) { palavras.forEach((s, i) => s.classList.toggle('on', i < n)); acesas = n; }
   };
-  /* reserva: depois de um tempo, o que já passou da tela acende mesmo sem scroll */
-  setTimeout(() => { if (manif && manif.getBoundingClientRect().top < innerHeight) palavras.forEach(s => s.classList.add('on')); }, 6000);
+  /* a foto parada atrás só pinta quando a seção está por perto */
+  const secQuem = d.querySelector('.quem');
+  if (secQuem && 'IntersectionObserver' in w) {
+    new IntersectionObserver(([en]) => secQuem.classList.toggle('perto', en.isIntersecting), { rootMargin: '30% 0px' }).observe(secQuem);
+  } else if (secQuem) secQuem.classList.add('perto');
 
   /* ---------- um único laço de scroll ---------- */
   const zap = d.querySelector('.zap');
@@ -85,7 +91,10 @@
     pendente = false;
     const y = w.scrollY;
     top && top.classList.toggle('solid', y > 40);
-    zap && zap.classList.toggle('ver', y > innerHeight * 0.5);
+    const secQ = d.querySelector('.quem'), rq = secQ ? secQ.getBoundingClientRect() : null;
+    /* no celular a bolinha não cobre o texto enquanto Quem somos está parada na tela */
+    const parada = mob.matches && rq && rq.top < innerHeight * .5 && rq.bottom > innerHeight * .5;
+    zap && zap.classList.toggle('ver', y > innerHeight * 0.5 && !parada);
     hero && hero.classList.toggle('moved', y > 20);
     acender();
     if (bola && hero) {

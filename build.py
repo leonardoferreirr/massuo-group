@@ -52,8 +52,7 @@ FUNDADORES = [
              "planejamento financeiro e desenvolvimento empresarial. Sua visão de negócios, capacidade de gestão e foco em resultados "
              "contribuem para o crescimento sustentável do grupo, fortalecendo sua estrutura organizacional e impulsionando a expansão "
              "de suas empresas."],
-     "proposito": "Seu propósito: contribuir para a construção de um grupo empresarial sólido, inovador e preparado para gerar "
-                  "oportunidades e transformar mercados.",
+     "proposito": "",
      "alt": "Sandra Sathie, COO Fundadora do Massuo Group, sentada no escritório, de blazer preto e blusa branca"},
 ]
 
@@ -128,12 +127,11 @@ def foot_empresas():
 def fundadores():
     out = []
     for i, f in enumerate(FUNDADORES):
-        inv = " fundador--inv" if i % 2 else ""
         foto = (f'<img src="/assets/img/{f["slug"]}-900.webp" srcset="/assets/img/{f["slug"]}-400.webp 400w, /assets/img/{f["slug"]}-600.webp 600w, /assets/img/{f["slug"]}-900.webp 900w" '
-                f'sizes="(max-width:860px) 84vw, 36vw" alt="{e(f["alt"])}" width="900" height="900" loading="lazy" decoding="async">')
+                f'sizes="(max-width:860px) 92vw, 32vw" alt="{e(f["alt"])}" width="900" height="900" loading="lazy" decoding="async">')
         bio = "".join(f"<p>{e(p)}</p>" for p in f["bio"])
         prop = f'<p class="proposito">{e(f["proposito"])}</p>' if f["proposito"] else ""
-        out.append(f'<article class="fundador{inv} rv" id="{f["slug"]}"><figure class="fundador__foto">{foto}</figure>'
+        out.append(f'<article class="fundador rv" data-d="{i}" id="{f["slug"]}"><figure class="fundador__foto">{foto}</figure>'
                    f'<div class="fundador__txt"><h3>{e(f["nome"])}</h3><span class="fundador__cargo">{e(f["cargo"])}</span>{bio}{prop}</div></article>')
     return "\n      ".join(out)
 
@@ -190,15 +188,6 @@ def fundo(nome, pos="50% 50%"):
     return (f'<div class="sec__fundo" aria-hidden="true"><img src="/assets/img/{nome}-1600.webp" '
             f'srcset="/assets/img/{nome}-900.webp 900w, /assets/img/{nome}-1600.webp 1600w" sizes="100vw" alt="" '
             f'width="1600" height="900" loading="lazy" decoding="async" style="object-position:{pos}"></div>')
-
-
-def foto_quem():
-    """A recepção com o logo: imagem de verdade, em moldura, ao lado do texto de propósito."""
-    if not (IMG / "mg-sede-1600.webp").exists():
-        return ""
-    return ('<figure class="quem__foto rv" data-d="3"><img src="/assets/img/mg-sede-1600.webp" '
-            'srcset="/assets/img/mg-sede-900.webp 900w, /assets/img/mg-sede-1600.webp 1600w" sizes="(max-width:900px) 92vw, 34vw" '
-            'alt="Recepção com o logo do Massuo Group na parede de pedra escura" width="1600" height="900" loading="lazy" decoding="async"></figure>')
 
 
 def fone():
@@ -334,7 +323,7 @@ def main():
         "ARROW": ARROW, "ZAP": ZAP, "ZAP_B": ZAP.replace("<svg ", '<svg class="zapi" '),
         "HERO_TITULO": e(HERO_TITULO), "O_QUE_E": e(O_QUE_E), "PROPOSITO": palavras(PROPOSITO),
         "FUNDADORES": fundadores(), "EMPRESAS_LEAD": e(EMPRESAS_LEAD), "EMPRESAS_FILA": fila([card(m) for m in EMPRESAS]),
-        "PERFIS": perfis(), "ROTAS": rotas(), "NOTICIAS": noticias(), "QUEM_FOTO": foto_quem(), "EMPRESAS_FUNDO": fundo("mg-sala", "50% 60%"),
+        "PERFIS": perfis(), "ROTAS": rotas(), "NOTICIAS": noticias(), "QUEM_FUNDO": fundo("mg-sede", "50% 42%"), "EMPRESAS_FUNDO": fundo("mg-sala", "50% 60%"),
         "WHATSAPP": WHATSAPP, "MSGS": json.dumps(MSGS, ensure_ascii=False).replace("</", "<\\/"),
         "FOOT_NAV": foot_nav(), "FOOT_EMPRESAS": foot_empresas(), "ANO": str(date.today().year),
         "ILUSTRATIVAS": "Imagens ilustrativas." if geradas else "",

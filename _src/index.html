@@ -23,22 +23,22 @@
     </div>
   </section>
 
-  <section class="sec quem" id="quem-somos">
-    <div class="wrap quem__in">
-      <div class="quem__lado">
-        <h2 class="rv">Quem somos</h2>
-        <div class="linha rv" data-d="1"></div>
-        <div class="ctas rv" data-d="2"><a class="btn btn--line" href="#fundadores">Conhecer os fundadores {{ARROW}}</a></div>
-        {{QUEM_FOTO}}
+  <section class="quem" id="quem-somos">
+    {{QUEM_FUNDO}}
+    <div class="quem__palco">
+      <div class="wrap quem__in">
+        <h2>Quem somos</h2>
+        <p class="manifesto" data-manifesto>{{PROPOSITO}}</p>
       </div>
-      <p class="manifesto" data-manifesto>{{PROPOSITO}}</p>
     </div>
   </section>
 
   <section class="sec fundadores" id="fundadores">
     <div class="wrap">
       <div class="sec__cab sec__cab--centro"><h2 class="rv">Fundadores</h2></div>
-      {{FUNDADORES}}
+      <div class="fundadores__grade">
+        {{FUNDADORES}}
+      </div>
       <div class="ctas rv"><a class="btn btn--pri" href="#contato">Fale com a gente {{ARROW}}</a></div>
     </div>
   </section>
@@ -46,9 +46,8 @@
   <section class="sec sec--surface empresas" id="empresas">
     {{EMPRESAS_FUNDO}}
     <div class="wrap">
-      <div class="sec__cab">
+      <div class="sec__cab sec__cab--centro">
         <h2 class="rv">Empresas</h2>
-        <p class="rv" data-d="1">{{EMPRESAS_LEAD}}</p>
       </div>
       {{EMPRESAS_FILA}}
       <div class="ctas rv"><a class="btn btn--line" href="#contato" data-perfil-set="cliente">Sou cliente de uma das empresas {{ARROW}}</a></div>
