@@ -192,6 +192,15 @@ def fundo(nome, pos="50% 50%"):
             f'width="1600" height="900" loading="lazy" decoding="async" style="object-position:{pos}"></div>')
 
 
+def foto_quem():
+    """A recepção com o logo: imagem de verdade, em moldura, ao lado do texto de propósito."""
+    if not (IMG / "mg-sede-1600.webp").exists():
+        return ""
+    return ('<figure class="quem__foto rv" data-d="3"><img src="/assets/img/mg-sede-1600.webp" '
+            'srcset="/assets/img/mg-sede-900.webp 900w, /assets/img/mg-sede-1600.webp 1600w" sizes="(max-width:900px) 92vw, 34vw" '
+            'alt="Recepção com o logo do Massuo Group na parede de pedra escura" width="1600" height="900" loading="lazy" decoding="async"></figure>')
+
+
 def fone():
     w = WHATSAPP
     return f"+{w[:2]} {w[2:4]} {w[4:-4]}-{w[-4:]}" if len(w) >= 12 else ""
@@ -326,7 +335,7 @@ def main():
         "ARROW": ARROW, "ZAP": ZAP, "ZAP_B": ZAP.replace("<svg ", '<svg class="zapi" '),
         "HERO_TITULO": e(HERO_TITULO), "O_QUE_E": e(O_QUE_E), "PROPOSITO": palavras(PROPOSITO),
         "FUNDADORES": fundadores(), "EMPRESAS_LEAD": e(EMPRESAS_LEAD), "EMPRESAS_FILA": fila([card(m) for m in EMPRESAS]),
-        "PERFIS": perfis(), "ROTAS": rotas(), "NOTICIAS": noticias(), "QUEM_FUNDO": fundo("mg-sede", "100% 40%"), "EMPRESAS_FUNDO": fundo("mg-sala", "50% 60%"),
+        "PERFIS": perfis(), "ROTAS": rotas(), "NOTICIAS": noticias(), "QUEM_FOTO": foto_quem(), "EMPRESAS_FUNDO": fundo("mg-sala", "50% 60%"),
         "WHATSAPP": WHATSAPP, "MSGS": json.dumps(MSGS, ensure_ascii=False).replace("</", "<\\/"),
         "FOOT_NAV": foot_nav(), "FOOT_EMPRESAS": foot_empresas(), "ANO": str(date.today().year),
         "ILUSTRATIVAS": "Imagens ilustrativas." if geradas else "",

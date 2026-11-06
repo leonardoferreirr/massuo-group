@@ -1,10 +1,10 @@
 /* Massuo Group: núcleo do site. Sem dependência para o essencial (menu, revelações, propósito aceso,
-   fileira de empresas, formulário). A esfera em 3D (esfera.js, three.js) entra na primeira interação. */
+   fileira de empresas, formulário). A esfera ao vivo (esfera.js) entra logo depois do load, sobre o pôster idêntico. */
 (() => {
   const d = document, h = d.documentElement, w = window;
   const mob = w.matchMedia('(max-width:860px)');
   const rm = w.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const ESFERA = '/assets/js/esfera.js?v=f798b61cfc';
+  const ESFERA = '/assets/js/esfera.js?v=9be016d015';
 
   /* ---------- cabeçalho e menu ---------- */
   const top = d.querySelector('.top'), burger = d.querySelector('.burger');
@@ -45,7 +45,7 @@
   setTimeout(reserva, 2500);
   setTimeout(() => rvs.forEach(mostrar), 9000);
 
-  /* ---------- esfera do logo em 3D: carrega na primeira interação, pôster até lá ---------- */
+  /* ---------- esfera do logo ao vivo: entra depois do load, pôster idêntico até lá ---------- */
   const hero = d.querySelector('.hero'), esfera = d.querySelector('.esfera');
   let bola = null, montou = false;
   const montar = () => {
@@ -53,7 +53,7 @@
     montou = true;
     gatilhos.forEach(ev => w.removeEventListener(ev, montar));
     import(ESFERA)
-      .then(m => m.mountEsfera(esfera.querySelector('.esfera__canvas'), { mobile: mob.matches, reducedMotion: rm, onda: '/assets/img/massuo-onda.svg' }))
+      .then(m => m.mountEsfera(esfera.querySelector('.esfera__canvas'), { mobile: mob.matches, reducedMotion: rm }))
       .then(b => { bola = b; pedir(); return b.ready; })
       .then(() => esfera.classList.add('live'))
       .catch(err => console.warn('3D indisponível, fica o pôster', err));
@@ -61,7 +61,8 @@
   const gatilhos = ['pointermove', 'touchstart', 'scroll', 'wheel', 'keydown'];
   if (esfera) {
     gatilhos.forEach(ev => w.addEventListener(ev, montar, { passive: true }));
-    setTimeout(montar, 12000);
+    if (d.readyState === 'complete') setTimeout(montar, 900);
+    else w.addEventListener('load', () => setTimeout(montar, 900), { once: true });
   }
 
   /* ---------- propósito aceso palavra a palavra ---------- */

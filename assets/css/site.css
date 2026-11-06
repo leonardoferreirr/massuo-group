@@ -296,3 +296,15 @@ h3{font-weight:400;letter-spacing:-.015em;line-height:1.2;font-size:var(--t-h3)}
   .esfera__canvas,.esfera__poster{transition:none}
   .card,.card__mais,.card__logo img{transition:none}
 }
+
+/* revisão: imagens aparecem de verdade, e não como fantasma atrás do texto */
+.quem__foto{margin:2.2rem 0 0;border-radius:14px;overflow:hidden;box-shadow:0 30px 60px -36px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.07)}
+.quem__foto img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:70% 50%}
+.empresas .sec__fundo{inset:0 0 auto 0;height:clamp(25rem,66vh,40rem)}
+.empresas .sec__fundo img{object-position:50% 0%!important;opacity:.72;-webkit-mask-image:linear-gradient(180deg,#000 38%,transparent);mask-image:linear-gradient(180deg,#000 38%,transparent)}
+.empresas .sec__fundo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.86) 0%,rgba(0,0,0,.5) 42%,rgba(0,0,0,0) 72%)}
+.empresas .wrap{position:relative;z-index:1}
+.empresas .sec__cab p{color:var(--prata-hi,#e6e6e6)}
+.brand__esfera{width:2.6rem;height:2.6rem}
+@media (max-width:900px){.quem__foto{margin:1.8rem auto 0;max-width:34rem}.empresas .sec__fundo::after{background:linear-gradient(180deg,rgba(0,0,0,.72),rgba(0,0,0,.35) 70%,rgba(0,0,0,0))}.brand__esfera{width:2.3rem;height:2.3rem}}
+@media (max-width:900px){.empresas .sec__fundo img{object-position:0% 0%!important}}
