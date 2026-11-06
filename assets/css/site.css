@@ -394,3 +394,5 @@ h3{font-weight:400;letter-spacing:-.015em;line-height:1.2;font-size:var(--t-h3)}
   #empresas .sec__cab{margin-bottom:clamp(1.2rem,3vh,2.2rem)}
   #empresas .ctas{margin-top:clamp(1.2rem,3vh,2rem)}
 }
+.card__logo{min-height:0;padding-bottom:1.1rem}
+.card__logo img{height:100%;max-height:100%;width:100%;object-fit:contain}
