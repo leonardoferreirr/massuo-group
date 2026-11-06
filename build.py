@@ -240,7 +240,6 @@ def llms():
            f"- Frase do grupo: {HERO_TITULO}",
            "- Empresas do grupo: " + "; ".join(f"{m['nome']} ({m['papel'].lower()}, {SITES[m['slug']]})" for m in EMPRESAS) + ".",
            "- Fundadores: " + "; ".join(f"{f['nome']} | {f['cargo']}" for f in FUNDADORES) + ".",
-           "- Endereço: [A PREENCHER].",
            f"- Contato: WhatsApp {fone()} e formulário em {S}/#contato." if WHATSAPP else f"- Contato: formulário em {S}/#contato.",
            "", "## Propósito", "", PROPOSITO, "", "## Fundadores", ""]
     for f in FUNDADORES:

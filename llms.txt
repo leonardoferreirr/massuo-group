@@ -8,7 +8,6 @@
 - Frase do grupo: Transformar oportunidades em negócios sólidos e relevantes.
 - Empresas do grupo: City Steel (construção em steel frame, https://citysteel.vercel.app); Reformuli (reforma de apartamentos, https://reformuli.vercel.app); Multihall (materiais de construção a seco, https://multihall.vercel.app).
 - Fundadores: Paulo Massuo Jr. | CEO Fundador do Massuo Group; Sandra Sathie | COO Fundadora do Massuo Group.
-- Endereço: [A PREENCHER].
 - Contato: WhatsApp +55 24 99859-3556 e formulário em https://massuogroup.vercel.app/#contato.
 
 ## Propósito
