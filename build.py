@@ -64,7 +64,7 @@ EMPRESAS = [
               "Também é uma franquia.",
      "c1": "#6b2a06", "c2": "#0a0a0b", "ac": "#FF6A13", "logo": ("citysteel", 577, 314)},
     {"slug": "reformuli", "nome": "Reformuli", "papel": "Reforma de apartamentos",
-     "texto": "Reforma de apartamentos entregues pela construtora, em três planos de acabamento: simples, médio e alto. "
+     "texto": "Reforma de apartamentos entregues pela construtora, em três planos: Essencial, Confort e Premium. "
               "Também é uma franquia.",
      "c1": "#4d3716", "c2": "#0b0a08", "ac": "#c9974f", "logo": ("reformuli", 5669, 1235)},
     {"slug": "multihall", "nome": "Multihall", "papel": "Materiais de construção a seco",
