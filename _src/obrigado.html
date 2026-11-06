@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+{{HEAD}}
+</head>
+<body>
+<main class="thanks">
+  <div>
+    <div class="brand">
+      <img class="brand__esfera" src="/assets/img/esfera-96.webp" alt="" width="96" height="96">
+      <img class="brand__nome" src="/assets/img/nome-240.webp" alt="Massuo Group" width="240" height="71">
+    </div>
+    <h1>Abrindo o WhatsApp.</h1>
+    <p>Em instantes você fala com o Massuo Group.</p>
+    <div class="spin" aria-hidden="true"></div>
+    <div class="ctas">
+      <a class="btn btn--pri" id="go" href="https://wa.me/{{WHATSAPP}}">Abrir agora {{ARROW}}</a>
+      <a class="btn btn--line" href="/">Voltar ao site</a>
+    </div>
+  </div>
+</main>
+<script>
+(function(){
+  var W='{{WHATSAPP}}', M={{MSGS}};
+  var q=new URLSearchParams(location.search), a=(q.get('a')||'').replace(/[^a-z-]/g,'');
+  var msg=M[a]||M.padrao;
+  try{ msg = sessionStorage.getItem('mg_msg') || msg; sessionStorage.removeItem('mg_msg'); }catch(e){}
+  var dest='https://wa.me/'+W+'?text='+encodeURIComponent(msg);
+  document.getElementById('go').href=dest;
+  var c=(q.get('c')||'site').replace(/[^a-z0-9_-]/gi,'');
+  var t0=Date.now(), partiu=false;
+  function vai(){ if(partiu) return; partiu=true; location.replace(dest); }
+  function talvez(){ var f=900-(Date.now()-t0); setTimeout(vai, f>0?f:0); }
+  window.dataLayer=window.dataLayer||[];
+  window.dataLayer.push({event:'conversao_whatsapp',contexto:c,perfil:a||'geral',eventCallback:talvez,eventTimeout:2000});
+  if(!window.google_tag_manager) talvez();
+  setTimeout(vai,2600);
+})();
+</script>
+</body>
+</html>
