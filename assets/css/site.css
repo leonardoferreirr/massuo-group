@@ -351,3 +351,13 @@ h3{font-weight:400;letter-spacing:-.015em;line-height:1.2;font-size:var(--t-h3)}
   .manifesto{font-size:clamp(1rem,4.3vw,1.3rem);line-height:1.46}
 }
 .quem__palco{padding-block:5.5rem clamp(1.3rem,3.2vh,2.4rem)}
+
+/* Contato: título no centro, texto em duas linhas, formulário embaixo com um botão só */
+.contato__in{display:block;max-width:44rem;margin-inline:auto}
+.contato__lado{text-align:center;margin-bottom:clamp(1.6rem,3.5vw,2.6rem)}
+.contato__lado p{max-width:41rem;margin:1rem auto 0;text-wrap:balance}
+
+/* Empresas: preto e branco, e a cor da marca só na que está sob o mouse (no toque, na que está em foco na fileira) */
+.card{filter:grayscale(1) brightness(1.08);transition:transform .55s var(--ease),box-shadow .55s var(--ease),filter .5s var(--ease)}
+.card:hover,.card:focus-within,.card.cor{filter:none}
+@media (prefers-reduced-motion:reduce){.card{transition:none}}

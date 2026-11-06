@@ -110,6 +110,11 @@
 
   /* ---------- fileira de empresas (estilo catálogo): setas, arrasto, centralizada quando cabe ---------- */
   d.querySelectorAll('[data-fila]').forEach(fila => {
+    /* no toque não existe mouse: a empresa que está em foco na fileira ganha a cor */
+    if (w.matchMedia('(hover:none)').matches && 'IntersectionObserver' in w) {
+      const ioCor = new IntersectionObserver(es => es.forEach(en => en.target.classList.toggle('cor', en.intersectionRatio > .8)), { root: fila.querySelector('.fila__trilho'), threshold: [.8] });
+      fila.querySelectorAll('.card').forEach(c => ioCor.observe(c));
+    }
     const trilho = fila.querySelector('.fila__trilho');
     const ant = fila.querySelector('[data-ant]'), prox = fila.querySelector('[data-prox]');
     const passo = () => Math.max(trilho.clientWidth * 0.8, 260);

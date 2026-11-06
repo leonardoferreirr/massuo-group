@@ -29,7 +29,7 @@ Sandra Sathie é COO Fundadora do Massuo Group, formada em Economia, com atuaç�
 A City Steel constrói, a Reformuli reforma e a Multihall fornece o material.
 
 - **City Steel** (construção em steel frame): Construção em steel frame do projeto à entrega, com engenharia que acompanha a obra e equipe própria de execução. Também é uma franquia. Site: https://citysteel.vercel.app
-- **Reformuli** (reforma de apartamentos): Reforma de apartamentos entregues pela construtora, em três padrões de acabamento: simples, médio e alto. Também é uma franquia. Site: https://reformuli.vercel.app
+- **Reformuli** (reforma de apartamentos): Reforma de apartamentos entregues pela construtora, em três planos de acabamento: simples, médio e alto. Também é uma franquia. Site: https://reformuli.vercel.app
 - **Multihall** (materiais de construção a seco): Revenda de materiais para construção a seco: steel frame, telhados, divisórias e forros em drywall, e fornecimento para empreendimentos. Também é uma franquia. Site: https://multihall.vercel.app
 
 ## Notícias
